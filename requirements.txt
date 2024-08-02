@@ -1,0 +1,8 @@
+dash
+pandas
+google-cloud-bigquery
+gunicorn
+Flask
+Flask-OIDC
+black
+debugpy

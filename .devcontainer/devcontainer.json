@@ -1,0 +1,43 @@
+{
+    "name": "Python 3.12 Dash Development Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.formatting.provider": "black",
+                "python.formatting.blackPath": "/home/vscode/.local/bin/black",
+                "editor.formatOnSave": true,
+                "editor.codeActionsOnSave": {
+                    "source.organizeImports": true
+                },
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter"
+                }
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.pylint",
+                "ms-python.black-formatter",
+                "ms-azuretools.vscode-docker",
+                "njpwerner.autodocstring",
+                "ms-python.debugpy",
+                "eamodio.gitlens",
+                "donjayamanne.githistory",
+                "mhutchie.git-graph"
+            ]
+        }
+    },
+    "forwardPorts": [
+        8080
+    ],
+    "postCreateCommand": "pip install --user --upgrade pip && pip install --user -r requirements.txt",
+    "remoteUser": "vscode",
+    "containerEnv": {
+        "PORT": "8080"
+    }
+}
