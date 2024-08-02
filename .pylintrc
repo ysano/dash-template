@@ -1,0 +1,19 @@
+[MASTER]
+# pythonpathを設定して、モジュールを見つけやすくする
+init-hook='import sys; sys.path.append(".")'
+
+[MESSAGES CONTROL]
+# 特定の警告を無視する
+disable=
+
+[FORMAT]
+# 1行の最大文字数
+max-line-length=120
+
+[REPORTS]
+# 出力フォーマット
+output-format=text
+
+[TYPECHECK]
+# 動的に作成された属性の名前を指定
+generated-members=REQUEST,acl_users,aq_parent

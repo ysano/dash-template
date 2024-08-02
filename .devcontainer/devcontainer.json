@@ -16,7 +16,14 @@
                 },
                 "[python]": {
                     "editor.defaultFormatter": "ms-python.black-formatter"
-                }
+                },
+                "python.linting.enabled": true,
+                "python.linting.pylintEnabled": true,
+                "python.testing.unittestEnabled": false,
+                "python.testing.pytestEnabled": true,
+                "python.analysis.extraPaths": [
+                    "${workspaceFolder}"
+                ]
             },
             "extensions": [
                 "ms-python.python",
@@ -25,11 +32,15 @@
                 "ms-python.black-formatter",
                 "ms-azuretools.vscode-docker",
                 "njpwerner.autodocstring",
-                "ms-python.debugpy",
                 "eamodio.gitlens",
                 "donjayamanne.githistory",
                 "mhutchie.git-graph"
             ]
+        }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.12"
         }
     },
     "forwardPorts": [
@@ -37,7 +48,17 @@
     ],
     "postCreateCommand": "pip install --user --upgrade pip && pip install --user -r requirements.txt",
     "remoteUser": "vscode",
+    "remoteEnv": {
+        "PATH": "${containerEnv:PATH}:/home/vscode/.local/bin",
+        "GCP_PROJECT": "${localEnv:GCP_PROJECT}",
+        "GOOGLE_APPLICATION_CREDENTIALS": "${localEnv:GOOGLE_APPLICATION_CREDENTIALS}"
+    },
     "containerEnv": {
-        "PORT": "8080"
-    }
+        "PORT": "8080",
+        "ENVIRONMENT": "development",
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+    "mounts": [
+        "source=${localWorkspaceFolder}/credentials,target=/workspace/credentials,type=bind,consistency=cached"
+    ]
 }
