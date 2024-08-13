@@ -23,7 +23,9 @@
                 "python.testing.pytestEnabled": true,
                 "python.analysis.extraPaths": [
                     "${workspaceFolder}"
-                ]
+                ],
+                "remote.containers.dockerPath": "/usr/bin/docker",
+                "remote.WSL.useWslProfiles": true
             },
             "extensions": [
                 "ms-python.python",
@@ -52,11 +54,6 @@
         "PATH": "${containerEnv:PATH}:/home/vscode/.local/bin",
         "GCP_PROJECT": "${localEnv:GCP_PROJECT}",
         "GOOGLE_APPLICATION_CREDENTIALS": "${localEnv:GOOGLE_APPLICATION_CREDENTIALS}"
-    },
-    "containerEnv": {
-        "PORT": "8080",
-        "ENVIRONMENT": "development",
-        "PYTHONPATH": "${workspaceFolder}"
     },
     "mounts": [
         "source=${localWorkspaceFolder}/credentials,target=/workspace/credentials,type=bind,consistency=cached"
